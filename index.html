@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整合範例 - 商品訂購系統</title>
+</head>
+
+<body>
+    
+
+        <h2>商品資訊</h2>
+        <table border="1">
+            <caption>本月特惠商品</caption>
+            <thead>
+                <tr>
+                    <th>商品編號</th>
+                    <th>商品名稱</th>
+                    <th>規格</th>
+                    <th>原價</th>
+                    <th>特價</th>
+                    <th>庫存</th>
+                    <th>評價</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>P001</td>
+                    <td>無線藍芽耳機</td>
+                    <td>黑色/白色</td>
+                    <td>$2,500</td>
+                    <td>$1,990</td>
+                    <td>25</td>
+                    <td>★★★★☆</td>
+                </tr>
+                <tr>
+                    <td>P002</td>
+                    <td>USB-C 充電線</td>
+                    <td>1.5米</td>
+                    <td>$499</td>
+                    <td>$299</td>
+                    <td>50</td>
+                    <td>★★★★★</td>
+                </tr>
+                <tr>
+                    <td>P003</td>
+                    <td>行動電源</td>
+                    <td>10000mAh</td>
+                    <td>$1,200</td>
+                    <td>$899</td>
+                    <td>12</td>
+                    <td>★★★★☆</td>
+                </tr>
+                <tr>
+                    <td>P004</td>
+                    <td>手機支架</td>
+                    <td>可調式</td>
+                    <td>$350</td>
+                    <td>$199</td>
+                    <td>30</td>
+                    <td>★★★☆☆</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"><strong>總共4項商品</strong></td>
+                    <td colspan="2"><strong>限時特惠中</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        <form action="/success" method="post">
+        <h2>訂購表單</h2>
+        <fieldset>
+            <legend>商品選擇</legend>
+            <p>
+                <input type="checkbox" id="P001" name="products" value="BuyP001">
+                <label for="P001"> 無線藍芽耳機 - $1990</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                <select name="P001color" id="P001color">
+                    <option value="">請選擇顏色</option>
+                    <option value="black">黑色</option>
+                    <option value="white">白色</option>
+                </select>&nbsp&nbsp&nbsp&nbsp
+                <label for="P001Quantity">數量：</label>
+                <input type="number" id="P001Quantity" name="P001Quantity" min="0" max="99" step="1" size="2" value="0">
+            </p>
+            <p>
+                <input type="checkbox" id="P002" name="products" value="BuyP002">
+                <label for="P002"> USB-C 充電線 - $299</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                <label for="P002Quantity">數量：</label>
+                <input type="number" id="P002Quantity" name="P002Quantity" min="0" max="99" step="1" size="2" value="0">
+            </p>
+            <p>
+                <input type="checkbox" id="P003" name="products" value="BuyP003">
+                <label for="P003"> 行動電源 - $899</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                <label for="P003Quantity">數量：</label>
+                <input type="number" id="P003Quantity" name="P003Quantity" min="0" max="99" step="1" size="2" value="0">
+            </p>
+            <p>
+                <input type="checkbox" id="P004" name="products" value="BuyP004">
+                <label for="P004"> USB-C 充電線 - $299</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <label for="P004Quantity">數量：</label>
+                <input type="number" id="P004Quantity" name="P004Quantity" min="0" max="99" step="1" size="2" value="0">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>收件人資訊</legend>
+            <p>
+                <label for="buyername">收件人姓名：</label>
+                <input id="buyername" name="buyername" type="text">
+            </p>
+            <p>
+                <label for="buyerphone">收件人電話：</label>
+                <input id="buyerphone" name="buyerphone" type="text" placeholder="09xxxxxxxx">
+            </p>
+            <p>
+                <label for="buyeremail">電子郵件：</label>
+                <input id="buyeremail" name="buyeremail" type="email">
+            </p>
+            <p>
+                <label for="buyeraddress">完整地址：</label>
+                <textarea id="buyeraddress" name="buyeraddress" rows="3" cols="30" placeholder="輸入地址"></textarea>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>配送方式</legend>
+            <p>
+                <input type="radio" id="standard" name="shippingmethod" value="standard">
+                <label for="standard">標準配送（3-5個工作天）&nbsp&nbsp－&nbsp&nbsp免費</label>
+            </p>
+            <p>
+                <input type="radio" id="fast" name="shippingmethod" value="fast">
+                <label for="fast">快速配送（1-2個工作天）&nbsp&nbsp－&nbsp&nbsp $100</label>
+            </p>
+            <p>
+                <input type="radio" id="nextday" name="shippingmethod" value="nextday">
+                <label for="nextday">隔日配送（次日到達）&nbsp&nbsp－&nbsp&nbsp $200</label>
+            </p>
+            <p>
+                <label for="shippingtime">希望配送時間：</label>
+                <select name="shippingtime" id="shippingtime">
+                    <option value="none">不指定</option>
+                    <option value="9to13">9點至13點</option>
+                    <option value="14to18">14點至18點</option>
+                </select>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>付款方式</legend>
+            <p><input type="radio" id="creditcard" name="paymethod" value="creditcard">
+                <label for="creditcard">信用卡付款</label>
+            </p>
+            <p><input type="radio" id="atm" name="paymethod" value="atm">
+                <label for="atm">ATM 轉帳</label>
+            </p>
+            <p><input type="radio" id="cod" name="paymethod" value="cod">
+                <label for="cod">貨到付款</label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>其他資訊</legend>
+            <p>
+                <label for="coupon">優惠券代碼：</label>
+                <input id="coupon" name="coupon" type="text">
+            <br>
+                <label for="remark">訂單備註：</label>
+            </p>
+            <p>
+                <textarea id="remark" name="remark" rows="5" cols="80" placeholder="有任何特殊需求請在此說明..."></textarea>
+            </p>
+            <p>
+                <input type="checkbox" id="sendinginfo" name="sendinginfo" value="true">
+                <label for="sendinginfo">我希望收到商品資訊及優惠訊息</label>
+            </p>
+            <p>
+                <input type="checkbox" id="ruleagree" name="ruleagree" value="true" required>
+                <label for="ruleagree">我已閱讀並同意<a href="rule">購物條款</a>和<a href="privacy">隱私政策</a></label>
+            </p>
+        </fieldset>
+        <p>
+            <button type="submit">確認訂購</button>
+            <button type="reset">清除表單</button>
+        </p>
+    </form>
+
+</body>
+
+</html>
